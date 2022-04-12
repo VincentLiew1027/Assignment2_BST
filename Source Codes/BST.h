@@ -51,7 +51,6 @@ struct BST {
 		bool CloneSubtree(BST,type);
 		bool printAncestor(type);
 		bool printSpiral();
-		int findLevel(BTNode *);
 
 		
 	
