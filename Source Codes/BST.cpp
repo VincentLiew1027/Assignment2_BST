@@ -323,7 +323,7 @@ void BST::desc_Print2(BTNode *cur)
 {
 	if (cur == NULL) return;
 	desc_Print2(cur->right);
-	cout << cur->item << endl;
+	cur->item.print(cout);
 	desc_Print2(cur->left);
 }
 
@@ -339,7 +339,7 @@ void BST::asc_Save2(BTNode *cur, fstream &outfile)
 	if (cur == NULL) return;
 	asc_Save2(cur->left, outfile);
 	
-		outfile << cur->item << " ";
+	 cur->item.print(outfile);
 	asc_Save2(cur->right, outfile);
 }
 
@@ -354,7 +354,7 @@ void BST::desc_Save2(BTNode *cur, fstream &outfile)
 {
 	if (cur == NULL) return;
 	desc_Save2(cur->right, outfile);
-	outfile << cur->item << endl;
+	cur->item.print(outfile);
 	desc_Save2(cur->left, outfile);
 }
 
