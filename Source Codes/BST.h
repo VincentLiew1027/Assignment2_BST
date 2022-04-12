@@ -52,6 +52,7 @@ struct BST {
 	bool display(int, int);
 	bool CloneSubtree(BST, type);
 	bool printAncestor(type);
+	bool printAncestor2(BTNode *, const type&,bool&);
 	bool printSpiral();
 
 

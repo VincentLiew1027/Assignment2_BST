@@ -307,7 +307,7 @@ bool BST::display(int order, int source)
 		else desc_Save(outfile); // descending order
 		outfile.close();
 	}
-	
+
 	return true;
 }
 
@@ -319,7 +319,7 @@ void BST::desc_Print()
 	cout << endl;
 }
 
-void BST::desc_Print2(BTNode *cur)
+void BST::desc_Print2(BTNode* cur)
 {
 	if (cur == NULL) return;
 	desc_Print2(cur->right);
@@ -327,30 +327,30 @@ void BST::desc_Print2(BTNode *cur)
 	desc_Print2(cur->left);
 }
 
-void BST::asc_Save(fstream &outfile)
+void BST::asc_Save(fstream& outfile)
 {
 	if (root == NULL) return;
 	asc_Save2(root, outfile);
 	cout << "Successfully save to file.\n";
 }
 
-void BST::asc_Save2(BTNode *cur, fstream &outfile)
+void BST::asc_Save2(BTNode* cur, fstream& outfile)
 {
 	if (cur == NULL) return;
 	asc_Save2(cur->left, outfile);
-	
-	 cur->item.print(outfile);
+
+	cur->item.print(outfile);
 	asc_Save2(cur->right, outfile);
 }
 
-void BST::desc_Save(fstream &outfile)
+void BST::desc_Save(fstream& outfile)
 {
 	if (root == NULL) return;
 	desc_Save2(root, outfile);
 	cout << "Successfully save to file.\n";
 }
 
-void BST::desc_Save2(BTNode *cur, fstream &outfile)
+void BST::desc_Save2(BTNode* cur, fstream& outfile)
 {
 	if (cur == NULL) return;
 	desc_Save2(cur->right, outfile);
@@ -367,7 +367,36 @@ bool BST::CloneSubtree(BST t1, type item)
 
 bool BST::printAncestor(type item)
 {
+	bool check = false;
+
+	if (root == NULL)
+	{
+		cout << "The tree is empty.";
+		return false;
+	}
+
+	if (!printAncestor2(root, item, check))
+	{
+		cout << "Could not found the matching item. ";
+		return false;
+	}
+	if (check == false) //return false if item do not have ancestor
+		return false;
 	return true;
+}
+
+bool BST::printAncestor2(BTNode* cur, const type& item, bool& check)
+{
+	if (cur == NULL) return false;
+	if (cur->item.compare2(item)) return true;
+	//if the item is the ancestor for the target item, print the item
+	if (printAncestor2(cur->left, item, check) || printAncestor2(cur->right, item, check))
+	{
+		cur->item.print(cout);
+		check = true; //the target item has ancestor, flag = true
+		return true;
+	}
+	return false;
 }
 
 bool BST::printSpiral()
