@@ -87,7 +87,7 @@ int main() {
 
 		system("pause");
 		system("cls");
-	} while (option != 8);
+	} while (option != 7);
 	return 0;
 }
 
