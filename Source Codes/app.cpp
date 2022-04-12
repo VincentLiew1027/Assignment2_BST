@@ -16,6 +16,8 @@ int main() {
 	//testing
 	BST s;
 	int option, order, source;
+	char studentFile[25] = "stundet.txt";
+
 	
 	do
 	{
@@ -24,7 +26,7 @@ int main() {
 		switch (option)
 		{
 		case 1:
-			if (readFile("student.txt", &s))
+			if (readFile(studentFile, &s))
 				cout << "Successfully read the file.\n";
 			else
 				cout << "Unable to read the file.\n";
