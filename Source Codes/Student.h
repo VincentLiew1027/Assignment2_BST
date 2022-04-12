@@ -22,5 +22,4 @@ struct Student{
 	bool compare3(int); //using == to compare student id with the id passed in
 	
 };
-#Commit
 #endif
