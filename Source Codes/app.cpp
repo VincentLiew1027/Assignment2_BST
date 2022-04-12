@@ -14,9 +14,10 @@ int menu();
 
 int main() {
 	//testing
-	BST s;
+	BST s, s2;
 	int option, order, source;
 	char studentFile[100] = "D:\\DESKTOP\\Assignment2\\Sample Textfile\\student.txt";
+	char id[256];
 	
 	do
 	{
@@ -61,14 +62,24 @@ int main() {
 				
 				cout << "Unable to display the student information.\n";
 			break;
-		/*case 4:
+		case 4:
 			cout << "Clone Subtree ";
 			cin >> s1.id;
-			if (!s.CloneSubtree())
+			if (!s2.CloneSubtree(s, s1))
+			{
 				cout << "Unable to print the subtree.\n";
+			}	
 			else
+			{
 				cout << "SubTree clone succesfully" << endl;
-			break;*/
+
+				cout << "Student in tree t1 :" << endl ;
+				s.preOrderPrint();
+				cout << "\n\nStudent in tree t2 :" << endl;
+				s2.preOrderPrint();
+			}
+				
+			break;
 		case 5:
 			cout << "Please enter the student ID that you would like to check for the student's ancestors: ";
 				cin >> s1.id;

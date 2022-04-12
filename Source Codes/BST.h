@@ -50,12 +50,13 @@ struct BST {
 	void deepestNodes2(BTNode*, int, const int&);
 	int findLevel(BTNode*);
 	bool display(int, int);
+	
 	bool CloneSubtree(BST, type);
 	bool printAncestor(type);
 	bool printAncestor2(BTNode *, const type&,bool&);
 	bool printSpiral();
 
-
+	void cloneTree(BTNode*, BTNode*); // to clone t1 to t2
 	void desc_Print(); // to print the descending order of the tree to the screen
 	void desc_Print2(BTNode*); // recursive function for desc_Print()
 	void asc_Save(fstream&); // to save the ascending order of the tree to the "student-info.txt" file

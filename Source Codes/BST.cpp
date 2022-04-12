@@ -358,10 +358,67 @@ void BST::desc_Save2(BTNode* cur, fstream& outfile)
 	desc_Save2(cur->left, outfile);
 }
 
+void BST::cloneTree(BTNode* a, BTNode* b) {
 
+	if (a == NULL)
+
+		return;
+
+	b = new BTNode();
+
+	b->item = a->item;
+
+	b->left = b->right = NULL;
+
+	cloneTree(a->left, b->left);
+
+	cloneTree(a->right, b->right);
+
+}
 
 bool BST::CloneSubtree(BST t1, type item)
 {
+	int key = item.id;
+
+	BTNode* curr = t1.root;
+
+	if (curr == NULL)
+
+		return false;
+
+	// Traverse until root reaches to dead end
+
+	while (curr != NULL) {
+
+		// pass right subtree as new tree
+
+		if (key > curr->item.id)
+
+			curr = curr->right;
+
+
+
+		// pass left subtree as new tree
+
+		else if (key < curr->item.id)
+
+			curr = curr->left;
+
+		else
+
+			break; // if the key is found break from the while loop
+
+	}
+
+	// if the key is not found return false
+
+
+
+
+
+	// cloning the tree
+
+	cloneTree(curr, this->root);
 	return true;
 }
 
