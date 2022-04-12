@@ -16,11 +16,6 @@ int main() {
 	//testing
 	BST s;
 	int option, order, source;
-	//char studentFile[20];
-	/*char studentFile[20];
-	studentFile* = "student.txt";*/
-
-	char studentFile[100] = "D:\\DESKTOP\\Assignment2\\Sample Textfile\\student.txt";
 	
 	do
 	{
