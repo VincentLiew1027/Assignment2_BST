@@ -24,7 +24,7 @@ int main() {
 		switch (option)
 		{
 		case 1:
-			if (readFile(studentFile, &s))
+			if (readFile("student.txt", &s))
 				cout << "Successfully read the file.\n";
 			else
 				cout << "Unable to read the file.\n";
@@ -32,7 +32,7 @@ int main() {
 			
 		case 2:
 			cout << "The deepest nodes are: \n";
-			if (!s.deepestNodes())
+			if (!s.deepestNode())
 				cout << "The tree is empty.\n";
 			break;
 		case 3:
@@ -60,14 +60,14 @@ int main() {
 				
 				cout << "Unable to display the student information.\n";
 			break;
-		/*case 4:
+		case 4:
 			cout << "Clone Subtree ";
 			cin >> s1.id;
 			if (!s.CloneSubtree())
 				cout << "Unable to print the subtree.\n";
 			else
 				cout << "SubTree clone succesfully" << endl;
-			break;*/
+			break;
 		case 5:
 			cout << "Please enter the student ID that you would like to check for the student's ancestors: ";
 				cin >> s1.id;
