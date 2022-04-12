@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <string>
 #include "BST.h"
 
 
@@ -260,7 +261,30 @@ void BST::case3(BTNode* cur) {
 
 bool BST::deepestNodes()
 {
+	if (root == NULL)
+	{
+		return false; //empty tree
+	}
+
+	int cur_level = 0; // current root or level of the tree
+	int level = findLevel(root);
+	deepestNodes2(root, cur_level, level);
 	return true;
+}
+
+void BST::deepestNodes2(BTNode* cur, int cur_level, const int& level)
+{
+	if (cur == NULL) return;
+	cur_level++;
+
+	if (cur_level == level)
+	{
+		cur->item.print(cout);
+		return;
+	}
+	deepestNodes2(cur->left, cur_level, level);
+	deepestNodes2(cur->right, cur_level, level);
+
 }
 
 bool BST::display(int order, int source)
@@ -349,6 +373,26 @@ bool BST::printAncestor(type item)
 bool BST::printSpiral()
 {
 	return true;
+}
+
+int BST::findLevel(BTNode* cur)
+{
+	if (cur == NULL)
+	{
+		return 0;
+	}
+
+	int left_level = findLevel(cur->left);
+	int right_level = findLevel(cur->right);
+
+	if (left_level > right_level)
+	{
+		return left_level + 1;
+	}
+	else
+	{
+		return right_level + 1;
+	}
 }
 
 #pragma endregion
