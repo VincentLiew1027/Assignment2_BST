@@ -265,8 +265,76 @@ bool BST::deepestNodes()
 
 bool BST::display(int order, int source)
 {
+	if (root == NULL)
+	{
+		cout << "The tree is empty. ";
+		return false;
+	}
+	if (source == 1) //print to screen
+	{
+		if (order == 1) inOrderPrint(); //using the provided inOrderPrint function to print ascending order
+		else desc_Print(); // descending order
+	}
+	else //save to file
+	{
+		fstream outfile("student-info.txt", ios::out);
+		if (!outfile) return false;
+		if (order == 1) asc_Save(outfile); // ascending order
+		else desc_Save(outfile); // descending order
+		outfile.close();
+	}
+	
 	return true;
 }
+
+
+void BST::desc_Print()
+{
+	if (root == NULL) return;
+	else desc_Print2(root);
+	cout << endl;
+}
+
+void BST::desc_Print2(BTNode *cur)
+{
+	if (cur == NULL) return;
+	desc_Print2(cur->right);
+	cout << cur->item << endl;
+	desc_Print2(cur->left);
+}
+
+void BST::asc_Save(fstream &outfile)
+{
+	if (root == NULL) return;
+	asc_Save2(root, outfile);
+	cout << "Successfully save to file.\n";
+}
+
+void BST::asc_Save2(BTNode *cur, fstream &outfile)
+{
+	if (cur == NULL) return;
+	asc_Save2(cur->left, outfile);
+	
+		outfile << cur->item << " ";
+	asc_Save2(cur->right, outfile);
+}
+
+void BST::desc_Save(fstream &outfile)
+{
+	if (root == NULL) return;
+	desc_Save2(root, outfile);
+	cout << "Successfully save to file.\n";
+}
+
+void BST::desc_Save2(BTNode *cur, fstream &outfile)
+{
+	if (cur == NULL) return;
+	desc_Save2(cur->right, outfile);
+	outfile << cur->item << endl;
+	desc_Save2(cur->left, outfile);
+}
+
+
 
 bool BST::CloneSubtree(BST t1, type item)
 {

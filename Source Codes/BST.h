@@ -52,6 +52,13 @@ struct BST {
 		bool printAncestor(type);
 		bool printSpiral();
 
+
+		void desc_Print(); // to print the descending order of the tree to the screen
+		void desc_Print2(BTNode *); // recursive function for desc_Print()
+		void asc_Save(fstream &); // to save the ascending order of the tree to the "student-info.txt" file
+		void asc_Save2(BTNode *, fstream &);//recursive function for asc_Save()
+		void desc_Save(fstream &); // to save the ascending order of the tree to the "student-info.txt" file
+		void desc_Save2(BTNode *, fstream &); //recursive function for desc_Save()
 		
 	
 };
