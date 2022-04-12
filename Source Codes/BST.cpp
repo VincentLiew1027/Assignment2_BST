@@ -260,6 +260,13 @@ void BST::case3(BTNode* cur) {
 
 bool BST::deepestNodes()
 {
+	if (root == NULL)
+	{
+		return false;
+	}
+
+	int cur_level = 0;
+	int level = findLevel();
 	return true;
 }
 
@@ -281,6 +288,11 @@ bool BST::printAncestor(type item)
 bool BST::printSpiral()
 {
 	return true;
+}
+
+int BST::findLevel(BTNode* cur)
+{
+
 }
 
 #pragma endregion
