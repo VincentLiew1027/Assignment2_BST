@@ -12,7 +12,7 @@ bool readFile(char *, BST *);
 int menu();
 
 int main() {
-
+	//testing
 	BST s;
 	system("pause");
 	return 0;
