@@ -8,23 +8,23 @@
 struct BST {
 
 	int		count;
-	BTNode	*root;
+	BTNode* root;
 
 	// print operation for BST (same as BT)					
-	void preOrderPrint2(BTNode *);	// recursive function for preOrderPrint()
-	void inOrderPrint2(BTNode *);	// recursive function for inOrderPrint()
-	void postOrderPrint2(BTNode *);	// recursive function for postOrderPrint()
+	void preOrderPrint2(BTNode*);	// recursive function for preOrderPrint()
+	void inOrderPrint2(BTNode*);	// recursive function for inOrderPrint()
+	void postOrderPrint2(BTNode*);	// recursive function for postOrderPrint()
 
 	// sample operation (extra functions) - same as BT
-	void countNode2(BTNode *, int &);		// recursive function for countNode()
-	bool fGS2(type, BTNode *);					// recursive function for findGrandsons(): to find the grandfather
-	void fGS3(BTNode *, int);				// recursive function for findGrandsons(): to find the grandsons after the grandfather has been found
+	void countNode2(BTNode*, int&);		// recursive function for countNode()
+	bool fGS2(type, BTNode*);					// recursive function for findGrandsons(): to find the grandfather
+	void fGS3(BTNode*, int);				// recursive function for findGrandsons(): to find the grandsons after the grandfather has been found
 
 	// basic functions for BST
-	void insert2(BTNode *, BTNode *);		// recursive function for insert() of BST
-	void case3(BTNode *);					// recursive function for remove()
-	void case2(BTNode *, BTNode *);		// recursive function for remove()
-	bool remove2(BTNode *, BTNode *, type);	// recursive function for remove()
+	void insert2(BTNode*, BTNode*);		// recursive function for insert() of BST
+	void case3(BTNode*);					// recursive function for remove()
+	void case2(BTNode*, BTNode*);		// recursive function for remove()
+	bool remove2(BTNode*, BTNode*, type);	// recursive function for remove()
 
 
 
@@ -48,7 +48,7 @@ struct BST {
 	//Own functions
 	bool deepestNodes();
 	void deepestNodes2(BTNode*, int, const int&);
-	int findLevel(BTNode *);
+	int findLevel(BTNode*);
 	bool display(int, int);
 	bool CloneSubtree(BST, type);
 	bool printAncestor(type);
@@ -56,11 +56,11 @@ struct BST {
 
 
 	void desc_Print(); // to print the descending order of the tree to the screen
-	void desc_Print2(BTNode *); // recursive function for desc_Print()
-	void asc_Save(fstream &); // to save the ascending order of the tree to the "student-info.txt" file
-	void asc_Save2(BTNode *, fstream &);//recursive function for asc_Save()
-	void desc_Save(fstream &); // to save the ascending order of the tree to the "student-info.txt" file
-	void desc_Save2(BTNode *, fstream &); //recursive function for desc_Save()
+	void desc_Print2(BTNode*); // recursive function for desc_Print()
+	void asc_Save(fstream&); // to save the ascending order of the tree to the "student-info.txt" file
+	void asc_Save2(BTNode*, fstream&);//recursive function for asc_Save()
+	void desc_Save(fstream&); // to save the ascending order of the tree to the "student-info.txt" file
+	void desc_Save2(BTNode*, fstream&); //recursive function for desc_Save()
 
 
 };
