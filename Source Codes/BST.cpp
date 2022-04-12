@@ -260,27 +260,27 @@ void BST::case3(BTNode* cur) {
 
 bool BST::deepestNodes()
 {
-
+	return true;
 }
 
 bool BST::display(int order, int source)
 {
-
+	return true;
 }
 
 bool BST::CloneSubtree(BST t1, type item)
 {
-
+	return true;
 }
 
 bool BST::printAncestor(type item)
 {
-
+	return true;
 }
 
 bool BST::printSpiral()
 {
-
+	return true;
 }
 
 #pragma endregion
