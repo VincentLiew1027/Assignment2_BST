@@ -7,7 +7,7 @@
 
 using namespace std;
 
-
+#pragma region Given source
 BST::BST() {
 	root = NULL;
 	count = 0;
@@ -155,7 +155,7 @@ bool BST::insert(type newItem) {
 
 
 void BST::insert2(BTNode* cur, BTNode* newNode) {
-	//if (cur->item > newNode->item) {
+
 	if (cur->item.compare1(newNode->item)) {
 		if (cur->left == NULL)
 			cur->left = newNode;
@@ -256,6 +256,7 @@ void BST::case3(BTNode* cur) {
 	free(is);
 }
 
+#pragma endregion
 
 #pragma region Own Functions
 
@@ -361,17 +362,14 @@ void BST::desc_Save2(BTNode* cur, fstream& outfile)
 void BST::cloneTree(BTNode* a, BTNode* b) {
 
 	if (a == NULL)
-
+	{
 		return;
-
-	b = new BTNode();
-
+	}
+	type curr;
+	b = new BTNode(curr);
 	b->item = a->item;
-
 	b->left = b->right = NULL;
-
 	cloneTree(a->left, b->left);
-
 	cloneTree(a->right, b->right);
 
 }
@@ -383,43 +381,75 @@ bool BST::CloneSubtree(BST t1, type item)
 	BTNode* curr = t1.root;
 
 	if (curr == NULL)
-
+	{
+		cout << "The tree is empty. ";
 		return false;
+	}
+	if (!CloneSubtree2(curr, item))
+	{
+		cout << "Could not found the matching item. ";
+		return false;
+	}
+	return true;
 
 	// Traverse until root reaches to dead end
 
-	while (curr != NULL) {
-
-		// pass right subtree as new tree
-
-		if (key > curr->item.id)
-
-			curr = curr->right;
+	//while (curr != NULL)
+	//{
 
 
+	//	if (key > curr->item.id)
+	//	{
+	//		curr = curr->right;	// pass right subtree as new tree
 
-		// pass left subtree as new tree
+	//	}
 
-		else if (key < curr->item.id)
 
-			curr = curr->left;
+	//	else if (key < curr->item.id)
+	//	{
+	//		curr = curr->left;// pass left subtree as new tree
+	//	}
 
-		else
+	//	else
+	//	{
+	//		break;
+	//	}
 
-			break; // if the key is found break from the while loop
+	//}
 
+	//// cloning the tree
+	//cloneTree(curr, this->root);
+	//return true;
+}
+
+bool BST::CloneSubtree2(BTNode* cur, const type& item)
+{
+	if (cur == NULL)
+	{
+		return false;
+	}
+	if (cur->item.compare2(item))
+	{
+		CloneSubtree3(cur);
+		return true;
 	}
 
-	// if the key is not found return false
+	if (CloneSubtree2(cur->left, item))
+	{
+		return true;
+	}
+	else
+	{
+		return CloneSubtree2(cur->right, item);
+	}
+}
 
-
-
-
-
-	// cloning the tree
-
-	cloneTree(curr, this->root);
-	return true;
+void BST::CloneSubtree3(BTNode* cur)
+{
+	if (cur == NULL) return;
+	cur->item.print(cout);
+	CloneSubtree3(cur->left);
+	CloneSubtree3(cur->right);
 }
 
 bool BST::printAncestor(type item)
@@ -456,9 +486,71 @@ bool BST::printAncestor2(BTNode* cur, const type& item, bool& check)
 	return false;
 }
 
+int BST::height(BTNode* node)
+{
+	if (node == NULL)
+		return 0;
+	else
+	{
+
+		// Compute the height of each subtree
+		int lheight = height(node->left);
+		int rheight = height(node->right);
+
+		// Use the larger one
+		if (lheight > rheight)
+			return (lheight + 1);
+		else
+			return (rheight + 1);
+	}
+}
 bool BST::printSpiral()
 {
+	int h = height(root);
+	int i;
+	// ltr -> Left to Right. If this variable
+	// is set,then the given level is traversed
+	// from left to right.
+	bool ltr = false;
+	for (i = 1; i <= h; i++)
+	{
+		printGivenLevel(root, i, ltr);
+
+		// Revert ltr to traverse next
+		// level in opposite order
+		ltr = !ltr;
+	}
 	return true;
+}
+
+void BST::printGivenLevel(BTNode* node, int level, int ltr)
+{
+	if (node == NULL)
+		return;
+	if (level == 1)
+		node->item.print(cout);
+
+	else if (level > 1)
+	{
+		if (ltr)
+		{
+			printGivenLevel(node->left,
+				level - 1, ltr);
+			printGivenLevel(node->right,
+				level - 1, ltr);
+		}
+		else
+		{
+			printGivenLevel(node->right,
+				level - 1, ltr);
+			printGivenLevel(node->left,
+				level - 1, ltr);
+		}
+	}
+}
+void BST::printLevelNodesHelper(BTNode* root, int level)
+{
+
 }
 
 int BST::findLevel(BTNode* cur)

@@ -63,20 +63,21 @@ int main() {
 				cout << "Unable to display the student information.\n";
 			break;
 		case 4:
-			cout << "Clone Subtree ";
+			cout << "Clone Subtree: ";
 			cin >> s1.id;
-			if (!s2.CloneSubtree(s, s1))
+			if (s.empty() )
 			{
 				cout << "Unable to print the subtree.\n";
 			}	
 			else
 			{
-				cout << "SubTree clone succesfully" << endl;
 
-				cout << "Student in tree t1 :" << endl ;
+				cout << "SubTree clone succesfully" << endl;
+				cout << "\nStudent in tree t1 :" << endl ;
 				s.preOrderPrint();
+				//s can print out but s2 after clone cannot print out
 				cout << "\n\nStudent in tree t2 :" << endl;
-				s2.preOrderPrint();
+				s2.CloneSubtree(s, s1);
 			}
 				
 			break;
@@ -88,7 +89,7 @@ int main() {
 			break;
 		case 6:
 			cout << "Print Spiral" << endl << endl;
-			
+			s.printSpiral();
 			break;
 		
 		default:

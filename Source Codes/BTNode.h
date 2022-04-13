@@ -10,6 +10,7 @@ struct BTNode {
 		type	item;
 		BTNode	*left, *right;
 		BTNode(type);
+
 };
 
 

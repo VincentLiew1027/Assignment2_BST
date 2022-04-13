@@ -7,3 +7,4 @@ BTNode::BTNode(type newItem) {
 	item = newItem;
 	left = right = NULL;
 }
+

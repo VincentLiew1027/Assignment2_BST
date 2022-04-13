@@ -45,16 +45,22 @@ struct BST {
 	int countNode();		// count number of tree nodes
 	bool findGrandsons(type);	// find the grandsons of an input father item
 
+#pragma region Own Function	
 	//Own functions
 	bool deepestNodes();
 	void deepestNodes2(BTNode*, int, const int&);
 	int findLevel(BTNode*);
 	bool display(int, int);
-	
+
 	bool CloneSubtree(BST, type);
+	bool CloneSubtree2(BTNode*, const type&);
+	void CloneSubtree3(BTNode*);
 	bool printAncestor(type);
-	bool printAncestor2(BTNode *, const type&,bool&);
+	bool printAncestor2(BTNode*, const type&, bool&);
 	bool printSpiral();
+	void printLevelNodesHelper(BTNode*,int);
+	void printGivenLevel(BTNode*, int, int);
+	int height(BTNode*);
 
 	void cloneTree(BTNode*, BTNode*); // to clone t1 to t2
 	void desc_Print(); // to print the descending order of the tree to the screen
@@ -64,6 +70,7 @@ struct BST {
 	void desc_Save(fstream&); // to save the ascending order of the tree to the "student-info.txt" file
 	void desc_Save2(BTNode*, fstream&); //recursive function for desc_Save()
 
+#pragma endregion	
 
 };
 
