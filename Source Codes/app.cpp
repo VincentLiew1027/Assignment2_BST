@@ -14,7 +14,7 @@ int menu();
 
 int main() {
 	//testing
-	BST s, s2;
+	BST t1, t2;
 	int option, order, source;
 	char studentFile[100] = "D:\\DESKTOP\\Assignment2\\Sample Textfile\\student.txt";
 	char id[256];
@@ -26,7 +26,7 @@ int main() {
 		switch (option)
 		{
 		case 1:
-			if (readFile(studentFile, &s))
+			if (readFile(studentFile, &t1))
 				cout << "Successfully read the file.\n";
 			else
 				cout << "Unable to read the file.\n";
@@ -34,7 +34,7 @@ int main() {
 			
 		case 2:
 			cout << "The deepest nodes are: \n";
-			if (!s.deepestNodes())
+			if (!t1.deepestNodes())
 				cout << "The tree is empty.\n";
 			break;
 		case 3:
@@ -58,14 +58,14 @@ int main() {
 				cout << "\nInvalid choice. Please enter again: ";
 				cin >> order;
 			}
-			if (!s.display(order, source))
+			if (!t1.display(order, source))
 				
 				cout << "Unable to display the student information.\n";
 			break;
 		case 4:
 			cout << "Clone Subtree: ";
 			cin >> s1.id;
-			if (s.empty() )
+			if (t1.empty() )
 			{
 				cout << "Unable to print the subtree.\n";
 			}	
@@ -74,22 +74,22 @@ int main() {
 
 				cout << "SubTree clone succesfully" << endl;
 				cout << "\nStudent in tree t1 :" << endl ;
-				s.preOrderPrint();
+				t1.preOrderPrint();
 				//s can print out but s2 after clone cannot print out
 				cout << "\n\nStudent in tree t2 :" << endl;
-				s2.CloneSubtree(s, s1);
+				t2.CloneSubtree(t1, s1);
 			}
 				
 			break;
 		case 5:
 			cout << "Please enter the student ID that you would like to check for the student's ancestors: ";
 				cin >> s1.id;
-			if (!s.printAncestor(s1))
+			if (!t1.printAncestor(s1))
 				cout << "There is no ancestor for this item.\n";
 			break;
 		case 6:
 			cout << "Print Spiral" << endl << endl;
-			s.printSpiral();
+			t1.printSpiral();
 			break;
 		
 		default:
